@@ -1,62 +1,55 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
+using namespace std;
 
-const int MASSIZE = 1000;
-int mas[MASSIZE];
-
-
-
-// Вариант 8:
-// Написать функцию вычисления среднего значения элементов массива.
 int averageMas(int* source, int size) {
-  return 0;
+    int sum = 0;
+    for (int i = 0; i < size; i++)
+    {
+        sum += source[i];
+    }
+    return sum;
 }
 
-
-
-//Вариант 3:
-//Написать функцию сравнение size элементов массивов  source и dest. Если массивы равны 0, если не равны -1
-
-int testCompareMas() {
-  int source[] = {0,1,2,3,4,5,6,7,8,9}; 
-  int dest[] = {0,1,2,3,4,5,6,7};
-
-  if (compareMas(source,dest,8) != 0)
-    return -1;
-    
-  int source1[] = {0,1,2,3,4,5,6,7,8,9}; 
-  int dest1[] = {1,1,2,3,4,5,6,7};
-
-  if (compareMas(source1,dest1,8) != -1)
-    return -1;
-
-  return 0;
-}
-
-
-// Вариант 8:
-// Написать функцию вычисления среднего значения элементов массива.
 int testAverageMas() {
-  return -1;
+    int testArr[10] = { 4,7,3,5,8,1,6,4,9,3 }; //10 значений, в сумме - 50
+    int testSize = 10;
+    int sum = 0;
+    for (int i = 0; i < testSize; i++)
+    {
+        sum += testArr[i];
+    }
+    if (sum / testSize != 5)
+        return -1;
+    return 0;
 }
 
 
-void runTest(int (*testFunction)(),const std::string& testName)
+void runTest(int (*testFunction)(),const string& testName)
 {
   if(testFunction()==0)
-    std::cout << "Test "<< testName << " - OK" << std::endl;
+    cout << "Test "<< testName << " - OK" << endl;
   else 
-    std::cout << "Test "<< testName << " - FAIL" << std::endl;
+    cout << "Test "<< testName << " - FAIL" << endl;
 }
 
 
 
 int main() {
-   runTest(testInitByZeroMas,"testInitByZeroMas");
-   runTest(testInitMas,"testInitMas");
-   runTest(testCopyMas,"testCopyMas");
-
-   runTest(testCompareMas,"testCompareMas");
-   runTest(testSkoFromMas,"testSkoFromMas");
+    setlocale(LC_ALL, "Russian");
+    unsigned short int size = 0;
+    cout << "Введите размер массива\n";
+    cin >> size;
+    int source[1000];
+    srand(time(NULL));
+    for (int i = 0; i < size; i++)
+    {
+        source[i] = rand() % 101;
+        //cout << i + 1 << " element = " << source[i] << "\n";
+    }
+    cout << "Среднее значение " << averageMas(source, size) / size << "\n";
+    runTest(testAverageMas,"testAverageMas");
 }
 
