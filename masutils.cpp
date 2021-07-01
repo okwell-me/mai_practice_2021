@@ -14,7 +14,7 @@ int averageMas(int* source, int size) {
 }
 
 int testAverageMas() {
-    int testArr[10] = { 4,7,3,5,8,1,6,4,9,3 }; //10 значений, в сумме - 50
+    int testArr[10] = { 4,7,3,5,8,1,6,4,9,3 }; //10 Р·РЅР°С‡РµРЅРёР№, РІ СЃСѓРјРјРµ - 50
     int testSize = 10;
     int sum = 0;
     for (int i = 0; i < testSize; i++)
@@ -40,7 +40,7 @@ void runTest(int (*testFunction)(),const string& testName)
 int main() {
     setlocale(LC_ALL, "Russian");
     unsigned short int size = 0;
-    cout << "Введите размер массива\n";
+    cout << "В¬РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°\n";
     cin >> size;
     int source[1000];
     srand(time(NULL));
@@ -49,7 +49,7 @@ int main() {
         source[i] = rand() % 101;
         //cout << i + 1 << " element = " << source[i] << "\n";
     }
-    cout << "Среднее значение " << averageMas(source, size) / size << "\n";
+    cout << "вЂ”СЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ " << averageMas(source, size) / size << "\n";
     runTest(testAverageMas,"testAverageMas");
 }
 
