@@ -22,10 +22,10 @@ struct TestStruct {
 ParamsOfBall initInfStruct() {
     ParamsOfBall temp;
     temp.Sy = 0;
-    cout << "Ââåäèòå Vy" << endl;
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²ÐµÑ€Ñ‚Ð¸ÐºÐ°Ð»ÑŒÐ½ÑƒÑŽ ÑÐºÐ¾Ñ€Ð¾ÑÑ‚ÑŒ" << endl;
     cin >> temp.Vy;
     temp.Sx = 0;
-    cout << "Ââåäèòå Vx" << endl;
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½ÑƒÑŽ ÑÐºÐ¾Ñ€Ð¾ÑÑ‚ÑŒ" << endl;
     cin >> temp.Vx;
     return temp;
 }
@@ -102,7 +102,7 @@ List* mainCalculating(List* beg) {
     double btwTime = 0;
 
     while (btwTime <= 0) {
-        cout << "Ââåäèòå èíòåðâàë âðåìåíè: " << endl;
+        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸: " << endl;
         cin >> btwTime;
     }
 
@@ -166,10 +166,10 @@ void RunTest() {
     arrToTests[0].res.t = (float)1;
 
     if (testCalculating(arrToTests[0])) {
-        cout << "Òåñòèðîâàíèå ïðîéäåíî" << endl;
+        cout << "Ð¢ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¹Ð´ÐµÐ½Ð¾" << endl;
     }
     else {
-        cout << "Îøèáêà. Òåñòèðîâàíèå íå ïðîéäåíî" << endl;
+        cout << "ÐžÑˆÐ¸Ð±ÐºÐ°. Ð¢ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð½Ðµ Ð¿Ñ€Ð¾Ð¹Ð´ÐµÐ½Ð¾" << endl;
     }
 
 }
@@ -180,13 +180,13 @@ int main() {
     int choice = 0;
     while (true) {
         cout << endl;
-        cout << "ÌÅÍÞ" << endl;
-        cout << "1 – Ââîä íà÷àëüíûõ äàííûõ" << endl;
-        cout << "2 – Ðàñ÷¸ò ñèòóàöèè" << endl;
-        cout << "3 – Òåñòèðîâàíèå" << endl;
-        cout << "4 – Âûõîä" << endl;
+        cout << "ÐœÐ•ÐÐ®" << endl;
+        cout << "1 â€“ Ð’Ð²Ð¾Ð´ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…" << endl;
+        cout << "2 â€“ Ð Ð°ÑÑ‡Ñ‘Ñ‚ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸Ð¸" << endl;
+        cout << "3 â€“ Ð¢ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ" << endl;
+        cout << "4 â€“ Ð’Ñ‹Ñ…Ð¾Ð´" << endl;
         cout << "=========================" << endl;
-        cout << "Ââåäèòå íîìåð ïóíêòà ìåíþ" << endl;
+        cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð¼ÐµÐ½ÑŽ" << endl;
         cin >> choice;
 
         switch (choice - 1) {
@@ -202,7 +202,7 @@ int main() {
         case 3:
             return 0;
         default:
-            cout << "Ââåäåí íåâåðíûé ïóíêò ìåíþ" << endl;
+            cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚ Ð¼ÐµÐ½ÑŽ" << endl;
             break;
         }
     }
