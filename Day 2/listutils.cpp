@@ -1,64 +1,124 @@
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
-const double g = 9.8;
-
-struct ParamsOfBall
-{
-	float Vy, Vx, m, Sx, Sy, t;
+struct Node {
+  int val;
+  Node* next;
 };
 
-ParamsOfBall Ball;
-
-void addParOfBall()
-{
-    cout >> "¬ведите массу шарика" >> endl;
-    cin << Ball.m;
-    cout >> "¬ведите вертикальную скорость" >> endl;
-    cin << Ball.Vy; 
-    cout >> "¬ведите горизонтальную скорость" >> endl;
-    cin << Ball.Vx;
+void init(Node* node, int a) {
+  node->val = a;
+  node->next = NULL;
 }
 
-
-int main()
+void show(Node* head)
 {
-    addParOfBall();
+  Node* bufer = head;
+  while (bufer != NULL)
+  {
+    cout << bufer->val << " ";
+    bufer = bufer->next;
+  }
 }
 
-/*
-int main()
+void pushNode(Node* head, Node* node)
 {
-    setlocale(LC_ALL, "Russian");
-    //List* begin = NULL;
-    int choice = 0;
-    while (true) {
-        cout << "1 Ц ¬вести параметры" << endl;
-        cout << "2 Ц –ассчитать ситуацию" << endl;
-        cout << "3 Ц «апустить тестирование" << endl;
-        cout << "4 Ц ¬ыход" << endl;
-        cout << "=========================" << endl;
-        cout << "¬ведите номер пункта меню" << endl;
-        cin >> choice;
+  Node* bufer = head;
+  while (bufer->next != NULL)
+  {
+    bufer = bufer->next;
+  }
+  bufer->next = new Node;
+  bufer = bufer->next;
+  bufer->val = node->val;
+  bufer->next = NULL;
+} 
 
-        switch (choice - 1) {
-        case 0:
-            begin = NULL;
-            begin = addElemToList(begin, initInfStruct());
-            break;
-        case 1:
-            begin = mainCalculating(begin);
-            break;
-        case 2:
-            RunTest();
-        case 3:
-            return 0;
-        default:
-            cout << "¬веден неверный пункт меню" << endl;
-            break;
-        }
-    }
+int SkoFromList(Node* head, int size)
+{
+  Node* bufer = head;
+  int summa = 0, summa_kvadrata = 0;
+  while (bufer->next != NULL)
+  {
+    summa = summa + bufer->val;
+    bufer = bufer->next;
+  }
+  summa = summa + bufer->val;
+  summa = summa / size;
+  bufer = head;
+  while (bufer->next != NULL)
+  {
+    summa_kvadrata = summa_kvadrata + pow(bufer->val - summa, 2);
+    bufer = bufer->next;
+  }
+  summa_kvadrata = summa_kvadrata + pow(bufer->val - summa, 2);
+  return sqrt(summa_kvadrata / size);
+}
+
+int testInit()
+{
+  Node* head = new Node;
+  int a = 3;
+  init(head, a);
+  if (head->val == 3)
+  {
     return 0;
-}*/
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+int testPushNode()
+{
+  Node* head = new Node;
+  Node* end = new Node;
+  init(head, 1);
+  init(end, 10);
+  if ( (head->val == 1) && (end->val == 10) )
+  {
+    return 0;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+int testSkoFromList() {
+  Node* head = new Node;
+  Node* middle = new Node;
+  Node* end = new Node;
+  init(head, 2);
+  init(middle, 10);
+  init(end, 12);
+  pushNode(head, middle);
+  pushNode(head, end);
+  if (SkoFromList(head, 3) == 4) // sqrt(56 / 3) ~ 4
+  {
+    return 0;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+
+static void runTest(int (*testFunction)(),const std::string& testName)
+{
+  if(testFunction()==0)
+    std::cout << "Test "<< testName << " - OK" << std::endl;
+  else 
+    std::cout << "Test "<< testName << " - FAIL" << std::endl;
+}
+
+
+
+int main() {
+  runTest(testSkoFromList,"testSkoFromList");
+  runTest(testInit, "testInit");
+  runTest(testPushNode, "testPushNode");
+}
